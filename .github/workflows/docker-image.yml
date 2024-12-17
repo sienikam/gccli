@@ -31,9 +31,7 @@ jobs:
         with:
           images: sienikam/gccli
           tags: |
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
+            type=ref,event=tag
           flavor: |
             latest=false
 

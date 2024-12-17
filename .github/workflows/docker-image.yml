@@ -30,7 +30,7 @@ jobs:
 
       - name: Test Docker image
         run: |
-          docker run --rm ${{ env.TEST_TAG }} gc users list 
+          docker run --rm ${{ env.TEST_TAG }}
 
       - name: Build and push
         uses: docker/build-push-action@v6

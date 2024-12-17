@@ -5,6 +5,10 @@ on:
     - cron: "0 0 1 * *"
   workflow_dispatch:
 
+env:
+  TEST_TAG: sienikam/gccli:test
+  LATEST_TAG: sienikam/gccli:latest
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -22,11 +26,11 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           load: true
-          push: false
+          tags: ${{ env.TEST_TAG }}
 
       - name: Test Docker image
         run: |
-          docker run --rm
+          docker run --rm ${{ env.TEST_TAG }}
 
       - name: Build and push
         uses: docker/build-push-action@v6

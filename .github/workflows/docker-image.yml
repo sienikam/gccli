@@ -1,14 +1,13 @@
 name: ci
 
 on:
+  schedule:
+    - cron: "0 0 1 * *"
   workflow_dispatch:
-    inputs:
-      tag_name:
-        description: 'Tag for the Docker image'
-        required: true
 
 env:
   TEST_TAG: sienikam/gccli:test
+  LATEST_TAG: sienikam/gccli:csvlint
 
 jobs:
   docker:
@@ -37,4 +36,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: sienikam/gccli:${{ inputs.tag_name }}
+          tags: ${{ env.LATEST_TAG }}

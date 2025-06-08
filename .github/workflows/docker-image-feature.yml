@@ -1,4 +1,4 @@
-name: ci-feature
+name: ci-feature1
 
 on:
   schedule:
